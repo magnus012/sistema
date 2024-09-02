@@ -3,6 +3,6 @@ export default function Cabecalho(props)
 {
     //método render
     return(
-        <Alert className={"text-center"} variant="light">{props.titulo || "Título não fornecido"}</Alert>
+        <Alert className={"text-center"} variant="dark">{props.titulo || "Título não fornecido"}</Alert>
     );
 }

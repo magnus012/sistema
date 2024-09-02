@@ -1,12 +1,10 @@
 import Pagina from "./components/layouts/Pagina";
+import TelaCliente from "./components/layouts/TelaCadastroCliente";
 function App() {
   return (
     <div className="App">
       <Pagina>
-        <h1>Esta é a pagina de cadastro de cliente</h1>
-      </Pagina>
-      <Pagina>
-        <h1>Esta é a pagina de cadastro de produto</h1>
+        <TelaCliente/>
       </Pagina>
     </div>
   );
