@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-export default function TelaFornecedor(props) {
+export default function FormCliente(props) {
   const [validated, setValidated] = useState(false);
   const handleSubmit = (event) => {
     //validação
@@ -14,10 +14,6 @@ export default function TelaFornecedor(props) {
   };
 
   return (
-    <div>
-      <h1 className={"text-center"} variant="dark">
-        {props.titulo || "Título não fornecido"}
-      </h1>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         {/* ########## Nome Usuario ########## */}
         <Form.Group className="mb-3" controlId="formGroupNome">
@@ -74,6 +70,5 @@ export default function TelaFornecedor(props) {
           Confirmar
         </Button>{" "}
       </Form>
-    </div>
   );
 }
