@@ -48,7 +48,7 @@ export default function FormCliente(props) {
               <option value="4">Não Especificado</option>
             </Form.Select>
             <Form.Control.Feedback type="invalid">
-              Por favor, selecione um genero!.
+              Por favor, selecione um genero!
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -64,7 +64,7 @@ export default function FormCliente(props) {
               placeholder="Data de Nascimento"
             />
             <Form.Control.Feedback type="invalid">
-              Por favor, informe sua data de nascimento!.
+              Por favor, informe sua data de nascimento!
             </Form.Control.Feedback>
           </Form.Group>
         </Col>

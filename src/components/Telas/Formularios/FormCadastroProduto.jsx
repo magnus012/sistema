@@ -90,9 +90,19 @@ export default function FormProduto(props) {
                     </Form.Group>
                 </Col>
             </Row>
-            <Button type="submit" variant="success">
-                Confirmar
-            </Button>{" "}
+            <Row className='mt-2 mb-2'>
+                <Col md={1}>
+                    <Button type="submit" variant="success">
+                        Confirmar
+                    </Button>{" "}
+                </Col>
+                <Col md={{ offset: 1 }}>
+                    <Button onClick={() => {
+                        props.setExibirTabela(true);
+                    }}
+                        type="button" variant="success">Voltar</Button>
+                </Col>
+            </Row>
         </Form>
     );
 }

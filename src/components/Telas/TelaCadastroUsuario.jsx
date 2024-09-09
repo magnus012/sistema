@@ -1,9 +1,9 @@
-import { Alert, Container } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import FormUsuario from "./Formularios/FormCadastroUsuario";
-import Pagina from "../../layouts/Pagina";
+import Pagina from "../layouts/Pagina";
 export default function TelaCadastroUsuario(props) {
     return (
-        <Container>
+        <div>
             <Pagina>
                 |<Alert className="mt-02 mb-02 success text-center" variant="dark">
                     <h2>
@@ -12,6 +12,6 @@ export default function TelaCadastroUsuario(props) {
                 </Alert>
                 <FormUsuario />
             </Pagina>
-        </Container>
+        </div>
     );
 }
