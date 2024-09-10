@@ -9,9 +9,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {
-          //A ordem das rotas é importante
-        }
+        {/* A ordem das rotas é importante */}
         <Routes>
           <Route path="/produto" element={<TelaCadastroProduto />} />
           <Route path="/cliente" element={<TelaCadastroCliente />} />

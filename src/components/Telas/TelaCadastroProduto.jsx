@@ -1,23 +1,24 @@
 import { Alert } from "react-bootstrap";
-import FormProduto from "./Formularios/FormCadastroProduto";
-import Pagina from "../layouts/Pagina";
 import { useState } from "react";
+import Pagina from "../layouts/Pagina";
+import FormProduto from "./Formularios/FormCadastroProduto";
 import TabelaProdutos from "./Tabelas/TabelaProdutos";
-import { produtos } from "../../dados/mockProdutos";
+import {listaProdutos} from "../../dados/mockProdutos";
+
 export default function TelaCadastroProduto(props) {
-    const [exibirTabela, setExibirTabela] = useState(true);
+    const [exibirProdutos, setExibirProdutos] = useState(true);
     return (
         <div>
             <Pagina>
-                |<Alert className="mt-02 mb-02 success text-center" variant="dark">
+                <Alert className="mt-02 mb-02 success text-center" variant="dark">
                     <h2>
                         Cadastro de Produto
                     </h2>
                 </Alert>
                 {
-                    exibirTabela ?
-                        <TabelaProdutos listaDeProdutos={produtos} setExibirTabela={setExibirTabela} /> :
-                        <FormProduto setExibirTabela={setExibirTabela} />
+                    exibirProdutos ?
+                    <TabelaProdutos listaProdutos={listaProdutos} setExibirProdutos={setExibirProdutos} /> :
+                    <FormProduto setExibirProdutos={setExibirProdutos} />
                 }
             </Pagina>
         </div>

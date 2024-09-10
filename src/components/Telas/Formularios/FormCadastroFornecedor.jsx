@@ -68,9 +68,24 @@ export default function FormFornecedor(props) {
           14783-252 SP.
         </Form.Control.Feedback>
       </Form.Group>
-      <Button type="submit" variant="success">
-        Confirmar
-      </Button>{" "}
+      <Row className="mt-2 mb-2">
+        <Col md={1}>
+          <Button type="submit" variant="success">
+            Confirmar
+          </Button>{" "}
+        </Col>
+        <Col md={{ offset: 1 }}>
+          <Button
+            onClick={() => {
+              props.setExibirFornecedores(true);
+            }}
+            type="button"
+            variant="success"
+          >
+            Voltar
+          </Button>
+        </Col>
+      </Row>
     </Form>
   );
 }
