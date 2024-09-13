@@ -1,9 +1,21 @@
 import { useState } from "react";
 import { Col, Form, Row, Button } from "react-bootstrap";
+import { listaProdutos } from "../../../dados/mockProdutos";
 
 export default function FormProduto(props) {
-  const [validated, setValidated] = useState(false);
-  const handleSubmit = (event) => {
+
+  //const [validated, setValidated] = useState(false);
+  const [produto, setProduto] = useState({
+    codigo: 0,
+    dataValidade: "",
+    descricao: "",
+    precoCusto: 0,
+    precoVenda: 0,
+    qtdEstoque: 0,
+    urlImagem: ""
+  });
+  const [formValidado, setFormValidado] = useState(false);
+  /*const handleSubmit = (event) => {
     //validação
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -11,15 +23,37 @@ export default function FormProduto(props) {
       event.stopPropagation();
     }
     setValidated(true);
-  };
+  };*/
+  function manipularSubmissao(evento) {
+    const form = evento.currentTarget;
+    if (form.checkValidity()) {
+      props.listaProdutos.push(produto);
+      //exibir tabela com o produto incluido
+      props.setExibirProdutos(true);
+      //cadastrar o produto
+    }
+    else {
+      setFormValidado(true);
+    }
+    evento.preventDefault();
+    evento.stopPropagation();
+
+  }
+
+  function manipularMudanca(evento){
+    const elemento = evento.target.name;
+    const valor = evento.target.value;
+    setProduto({...produto, [elemento]:valor});
+  }
+
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form noValidate validated={formValidado} onSubmit={manipularSubmissao}>
       <Row>
         <Col>
           {/* ########## Código ########## */}
-          <Form.Group className="mb-3" controlId="formGroupCodigo">
+          <Form.Group className="mb-3">
             <Form.Label>Código</Form.Label>
-            <Form.Control required type="number" placeholder="Código" />
+            <Form.Control required type="number" id="codigo" name="codigo" value={produto.codigo} onChange={manipularMudanca} placeholder="Código" />
             <Form.Control.Feedback type="invalid">
               Por favor, informe o código do produto!
             </Form.Control.Feedback>
@@ -27,9 +61,9 @@ export default function FormProduto(props) {
         </Col>
         <Col>
           {/* ########## Validade ########## */}
-          <Form.Group className="mb-3" controlId="formGroupValidade">
+          <Form.Group className="mb-3">
             <Form.Label>Válido até: </Form.Label>
-            <Form.Control required type="date" placeholder="Válido até:" />
+            <Form.Control required type="date" id="dataValidade" name="dataValidade" value={produto.dataValidade} onChange={manipularMudanca} placeholder="Válido até:" />
             <Form.Control.Feedback type="invalid">
               Por favor, informe a data de validade!
             </Form.Control.Feedback>
@@ -37,9 +71,9 @@ export default function FormProduto(props) {
         </Col>
         <Col>
           {/* ########## Descrição ########## */}
-          <Form.Group className="mb-3" controlId="formGroupDescricao">
+          <Form.Group className="mb-3">
             <Form.Label>Descrição:</Form.Label>
-            <Form.Control required type="text" placeholder="Descrição:" />
+            <Form.Control required type="text" id="descricao" name="descricao" value={produto.descricao} onChange={manipularMudanca} placeholder="Descrição:" />
             <Form.Control.Feedback type="invalid">
               Por favor, informe a descrição do produto!
             </Form.Control.Feedback>
@@ -49,12 +83,16 @@ export default function FormProduto(props) {
       <Row>
         <Col>
           {/* ########## Preço Custo ########## */}
-          <Form.Group className="mb-3" controlId="formGroupNome">
+          <Form.Group className="mb-3">
             <Form.Label>Preço de Custo:</Form.Label>
             <Form.Control
               required
               type="number"
               placeholder="Preço de Custo:"
+              id="precoCusto"
+              name="precoCusto"
+              value={produto.precoCusto}
+              onChange={manipularMudanca}
             />
             <Form.Control.Feedback type="invalid">
               Por favor, informe o preço de custo deste produto!
@@ -63,12 +101,16 @@ export default function FormProduto(props) {
         </Col>
         <Col>
           {/* ########## Preço Venda ########## */}
-          <Form.Group className="mb-3" controlId="formGroupNome">
+          <Form.Group className="mb-3">
             <Form.Label>Preço de Venda:</Form.Label>
             <Form.Control
               required
               type="number"
               placeholder="Preço de Venda:"
+              id="precoVenda"
+              name="precoVenda"
+              value={produto.precoVenda}
+              onChange={manipularMudanca}
             />
             <Form.Control.Feedback type="invalid">
               Por favor, informe o preço de venda deste produto!
@@ -77,9 +119,9 @@ export default function FormProduto(props) {
         </Col>
         <Col>
           {/* ########## Estoque ########## */}
-          <Form.Group className="mb-3" controlId="formGroupEstoque">
+          <Form.Group className="mb-3">
             <Form.Label>Estoque:</Form.Label>
-            <Form.Control required type="number" placeholder="Estoque:" />
+            <Form.Control required type="number" id="qtdEstoque" name="qtdEstoque" value={produto.qtdEstoque} onChange={manipularMudanca} placeholder="Estoque:" />
             <Form.Control.Feedback type="invalid">
               Por favor, informe a quantidade em estoque deste produto!
             </Form.Control.Feedback>
@@ -89,9 +131,9 @@ export default function FormProduto(props) {
       <Row>
         <Col>
           {/* ########## URL Imagem ########## */}
-          <Form.Group className="mb-3" controlId="formGroupUrlImagem">
+          <Form.Group className="mb-3">
             <Form.Label>URL da Imagem:</Form.Label>
-            <Form.Control required type="url" placeholder="URL da Imagem:" />
+            <Form.Control required type="url" id="urlImagem" name="urlImagem" value={produto.urlImagem} onChange={manipularMudanca} placeholder="URL da Imagem:" />
             <Form.Control.Feedback type="invalid">
               Por favor, informe a url da imagem deste produto!
             </Form.Control.Feedback>

@@ -3,7 +3,8 @@ import { useState } from "react";
 import Pagina from "../layouts/Pagina";
 import FormProduto from "./Formularios/FormCadastroProduto";
 import TabelaProdutos from "./Tabelas/TabelaProdutos";
-import {listaProdutos} from "../../dados/mockProdutos";
+import { listaProdutos } from "../../dados/mockProdutos";
+
 
 export default function TelaCadastroProduto(props) {
     const [exibirProdutos, setExibirProdutos] = useState(true);
@@ -17,8 +18,8 @@ export default function TelaCadastroProduto(props) {
                 </Alert>
                 {
                     exibirProdutos ?
-                    <TabelaProdutos listaProdutos={listaProdutos} setExibirProdutos={setExibirProdutos} /> :
-                    <FormProduto setExibirProdutos={setExibirProdutos} />
+                        <TabelaProdutos listaProdutos={listaProdutos} setExibirProdutos={setExibirProdutos} /> :
+                        <FormProduto listaProdutos={listaProdutos} setExibirProdutos={setExibirProdutos} />
                 }
             </Pagina>
         </div>
