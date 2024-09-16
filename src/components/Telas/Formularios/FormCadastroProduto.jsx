@@ -5,15 +5,16 @@ import { listaProdutos } from "../../../dados/mockProdutos";
 export default function FormProduto(props) {
 
   //const [validated, setValidated] = useState(false);
-  const [produto, setProduto] = useState({
-    codigo: 0,
-    dataValidade: "",
-    descricao: "",
-    precoCusto: 0,
-    precoVenda: 0,
-    qtdEstoque: 0,
-    urlImagem: ""
-  });
+  const [produto, setProduto] = useState(
+    props.modoEdicao ? props.produtoSelecionado : {
+      codigo: 0,
+      dataValidade: "",
+      descricao: "",
+      precoCusto: 0,
+      precoVenda: 0,
+      qtdEstoque: 0,
+      urlImagem: ""
+    });
   const [formValidado, setFormValidado] = useState(false);
   /*const handleSubmit = (event) => {
     //validação
@@ -27,10 +28,21 @@ export default function FormProduto(props) {
   function manipularSubmissao(evento) {
     const form = evento.currentTarget;
     if (form.checkValidity()) {
-      props.listaProdutos.push(produto);
-      //exibir tabela com o produto incluido
+      if (!props.modoEdicao) {
+        props.setListaProdutos([...props.listaProdutos, produto]);
+        //exibir tabela com o produto incluido
+        props.setExibirProdutos(true);
+        //cadastrar o produto
+      }
+      else {
+        const listaAtualiza = props.listaProdutos.map((p) =>
+          p.codigo === produto.codigo ? produto : p);
+        props.setListaProdutos(listaAtualiza);
+        //props.setListaProdutos([...props.listaProdutos.filter((p) => p.codigo !== produto.codigo), produto]);
+        props.setModoEdicao(false);
+      }
       props.setExibirProdutos(true);
-      //cadastrar o produto
+      setFormValidado(false);
     }
     else {
       setFormValidado(true);
@@ -40,10 +52,10 @@ export default function FormProduto(props) {
 
   }
 
-  function manipularMudanca(evento){
+  function manipularMudanca(evento) {
     const elemento = evento.target.name;
     const valor = evento.target.value;
-    setProduto({...produto, [elemento]:valor});
+    setProduto({ ...produto, [elemento]: valor });
   }
 
   return (
