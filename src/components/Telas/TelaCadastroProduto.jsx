@@ -3,11 +3,22 @@ import { useState } from "react";
 import Pagina from "../layouts/Pagina";
 import FormProduto from "./Formularios/FormCadastroProduto";
 import TabelaProdutos from "./Tabelas/TabelaProdutos";
-import { listaProdutos } from "../../dados/mockProdutos";
+import { produtos } from "../../dados/mockProdutos";
 
 
 export default function TelaCadastroProduto(props) {
     const [exibirProdutos, setExibirProdutos] = useState(true);
+    const [listaProdutos, setListaProdutos] = useState(produtos);
+    const [modoEdicao, setModoEdicao] = useState(false);
+    const [produtoSelecionado, setProdutoSelecionado] = useState({
+        codigo: 0,
+        dataValidade: "",
+        descricao: "",
+        precoCusto: 0,
+        precoVenda: 0,
+        qtdEstoque: 0,
+        urlImagem: ""
+    });    
     return (
         <div>
             <Pagina>
@@ -18,8 +29,17 @@ export default function TelaCadastroProduto(props) {
                 </Alert>
                 {
                     exibirProdutos ?
-                        <TabelaProdutos listaProdutos={listaProdutos} setExibirProdutos={setExibirProdutos} /> :
-                        <FormProduto listaProdutos={listaProdutos} setExibirProdutos={setExibirProdutos} />
+                        <TabelaProdutos listaProdutos={listaProdutos}
+                            setListaProdutos={setListaProdutos}
+                            setExibirProdutos={setExibirProdutos}
+                            setModoEdicao={setModoEdicao} 
+                            setProdutoSelecionado={setProdutoSelecionado} /> :
+                        <FormProduto listaProdutos={listaProdutos}
+                            setListaProdutos={setListaProdutos}
+                            setExibirProdutos={setExibirProdutos}
+                            modoEdicao={modoEdicao}
+                            setModoEdicao={setModoEdicao} 
+                            produtoSelecionado={produtoSelecionado} />
                 }
             </Pagina>
         </div>
