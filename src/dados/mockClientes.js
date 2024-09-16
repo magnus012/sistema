@@ -1,4 +1,4 @@
-export const listaClientes = [
+export const clientes = [
   {
     nome: "ChapaCliente",
     cpf: "123.456.789-10",

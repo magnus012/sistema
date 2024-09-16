@@ -1,9 +1,9 @@
 import { Alert } from "react-bootstrap";
 import { useState } from "react";
 import Pagina from "../layouts/Pagina";
-import FormFornecedor from "./Formularios/FormCadastroFornecedor";
+import FormCadastroFornecedor from "./Formularios/FormCadastroFornecedor";
 import TabelaFornecedores from "./Tabelas/TabelaFornecedores";
-import { listaFornecedores } from "../../dados/mockFornecedores";
+import { fornecedores } from "../../dados/mockFornecedores";
 
 export default function TelaCadastroFornecedor(props) {
     const [exibirFornecedores, setExibirFornecedores] = useState(true);
@@ -17,8 +17,8 @@ export default function TelaCadastroFornecedor(props) {
                 </Alert>
                 {
                     exibirFornecedores ?
-                        <TabelaFornecedores listaFornecedores={listaFornecedores} setExibirFornecedores={setExibirFornecedores} /> :
-                        <FormFornecedor setExibirFornecedores={setExibirFornecedores} />
+                        <TabelaFornecedores listaFornecedores={fornecedores} setExibirFornecedores={setExibirFornecedores} /> :
+                        <FormCadastroFornecedor setExibirFornecedores={setExibirFornecedores} />
                 }
             </Pagina>
         </div>

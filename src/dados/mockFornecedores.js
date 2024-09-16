@@ -1,4 +1,4 @@
-export const listaFornecedores = [
+export const fornecedores = [
   {
     nome: "ChapaFornecedor",
     cnpj: "123.4565.0001/30-02",

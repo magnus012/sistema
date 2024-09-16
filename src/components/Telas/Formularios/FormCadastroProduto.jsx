@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Col, Form, Row, Button } from "react-bootstrap";
 
-export default function FormProduto(props) {
-
+export default function FormCadastroProduto(props) {
   const [formValidado, setFormValidado] = useState(false);
   const produtoReseta= {
       codigo: 0,
@@ -67,7 +66,7 @@ export default function FormProduto(props) {
           {/* ########## Código ########## */}
           <Form.Group className="mb-3">
             <Form.Label>Código</Form.Label>
-            <Form.Control required type="number" id="codigo" name="codigo" value={props.produtoSelecionado.codigo} onChange={manipularMudanca} placeholder="Código" />
+            <Form.Control disabled={props.modoEdicao} required type="number" id="codigo" name="codigo" value={props.produtoSelecionado.codigo} onChange={manipularMudanca} placeholder="Código" />
             <Form.Control.Feedback type="invalid">
               Por favor, informe o código do produto!
             </Form.Control.Feedback>

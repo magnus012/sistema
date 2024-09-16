@@ -1,9 +1,9 @@
 import { Alert } from "react-bootstrap";
 import { useState } from "react";
 import Pagina from "../layouts/Pagina";
-import FormUsuario from "./Formularios/FormCadastroUsuario";
+import FormCadastroUsuario from "./Formularios/FormCadastroUsuario";
 import TabelaUsuarios from "./Tabelas/TabelaUsuarios";
-import { listaUsuarios } from "../../dados/mockUsuarios";
+import { usuarios } from "../../dados/mockUsuarios";
 
 export default function TelaCadastroUsuario(props) {
     const [exibirUsuarios, setExibirUsuarios] = useState(true);
@@ -17,8 +17,8 @@ export default function TelaCadastroUsuario(props) {
                 </Alert>
                 {
                     exibirUsuarios ?
-                        <TabelaUsuarios listaUsuarios={listaUsuarios} setExibirUsuarios={setExibirUsuarios} /> :
-                        <FormUsuario setExibirUsuarios={setExibirUsuarios} />
+                        <TabelaUsuarios listaUsuarios={usuarios} setExibirUsuarios={setExibirUsuarios} /> :
+                        <FormCadastroUsuario setExibirUsuarios={setExibirUsuarios} />
                 }
             </Pagina>
         </div>

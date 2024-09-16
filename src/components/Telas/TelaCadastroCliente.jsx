@@ -1,9 +1,9 @@
 import { Alert } from "react-bootstrap";
 import { useState } from "react";
 import Pagina from "../layouts/Pagina";
-import FormCliente from "./Formularios/FormCadastroCliente";
+import FormCadastroCliente from "./Formularios/FormCadastroCliente";
 import TabelaClientes from "./Tabelas/TabelaClientes";
-import { listaClientes } from "../../dados/mockClientes";
+import { clientes } from "../../dados/mockClientes";
 
 export default function TelaCadastroCliente(props) {
     const [exibirClientes, setExibirClientes] = useState(true);
@@ -17,8 +17,8 @@ export default function TelaCadastroCliente(props) {
                 </Alert>
                 {
                     exibirClientes ?
-                        <TabelaClientes listaClientes={listaClientes} setExibirClientes={setExibirClientes} /> :
-                        <FormCliente setExibirClientes={setExibirClientes} />
+                        <TabelaClientes listaClientes={clientes} setExibirClientes={setExibirClientes} /> :
+                        <FormCadastroCliente setExibirClientes={setExibirClientes} />
                 }
             </Pagina>
         </div>

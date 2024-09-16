@@ -1,7 +1,7 @@
 import { Alert } from "react-bootstrap";
 import { useState } from "react";
 import Pagina from "../layouts/Pagina";
-import FormProduto from "./Formularios/FormCadastroProduto";
+import FormCadastroProduto from "./Formularios/FormCadastroProduto";
 import TabelaProdutos from "./Tabelas/TabelaProdutos";
 import { produtos } from "../../dados/mockProdutos";
 
@@ -30,18 +30,20 @@ export default function TelaCadastroProduto(props) {
                 </Alert>
                 {
                     exibirProdutos ?
-                        <TabelaProdutos listaProdutos={listaProdutos}
-                            setListaProdutos={setListaProdutos}
-                            setExibirProdutos={setExibirProdutos}
-                            setModoEdicao={setModoEdicao} 
-                            setProdutoSelecionado={setProdutoSelecionado} /> :
-                        <FormProduto listaProdutos={listaProdutos}
-                            setListaProdutos={setListaProdutos}
-                            setExibirProdutos={setExibirProdutos}
-                            modoEdicao={modoEdicao}
-                            setModoEdicao={setModoEdicao} 
-                            setProdutoSelecionado={setProdutoSelecionado}
-                            produtoSelecionado={produtoSelecionado}  />
+                    <TabelaProdutos 
+                        listaProdutos={listaProdutos}
+                        setListaProdutos={setListaProdutos}
+                        setExibirProdutos={setExibirProdutos}
+                        setModoEdicao={setModoEdicao} 
+                        setProdutoSelecionado={setProdutoSelecionado} /> :
+                    <FormCadastroProduto 
+                        listaProdutos={listaProdutos}
+                        setListaProdutos={setListaProdutos}
+                        setExibirProdutos={setExibirProdutos}
+                        modoEdicao={modoEdicao}
+                        setModoEdicao={setModoEdicao} 
+                        setProdutoSelecionado={setProdutoSelecionado}
+                        produtoSelecionado={produtoSelecionado}  />
                 }
             </Pagina>
         </div>

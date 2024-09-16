@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 
-export default function FormFornecedor(props) {
+export default function FormCadastroFornecedor(props) {
   const [validated, setValidated] = useState(false);
   const handleSubmit = (event) => {
     //validação

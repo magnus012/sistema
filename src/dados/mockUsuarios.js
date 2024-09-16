@@ -1,4 +1,4 @@
-export const listaUsuarios = [
+export const usuarios = [
   {
     nomeUsuario: "ChapaUsuario",
     email: "exemplo@hotmail.com",
