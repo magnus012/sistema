@@ -39,7 +39,8 @@ export default function TelaCadastroProduto(props) {
                             setExibirProdutos={setExibirProdutos}
                             modoEdicao={modoEdicao}
                             setModoEdicao={setModoEdicao} 
-                            produtoSelecionado={produtoSelecionado} />
+                            produtoSelecionado={produtoSelecionado}
+                            setProdutoSelecionado={setProdutoSelecionado} />
                 }
             </Pagina>
         </div>

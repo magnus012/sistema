@@ -4,7 +4,7 @@ export default function TabelaProdutos(props) {
   function alterarProduto(produto){
     if(window.confirm("Deseja realmente alterar o produto" + produto.descricao)){
       props.setModoEdicao(true);
-      props.setProduto(...produto); 
+      props.setProdutoSelecionado(produto); 
       props.setExibirProdutos(false);
     }
   }

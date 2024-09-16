@@ -42,6 +42,7 @@ export default function FormProduto(props) {
         );
         console.log("Produto alterado com sucesso");
         props.setModoEdicao(false);
+        props.setExibirProdutos(true);
       }
     }
     else {
