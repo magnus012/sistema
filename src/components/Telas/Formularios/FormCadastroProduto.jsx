@@ -24,21 +24,9 @@ export default function FormCadastroProduto(props) {
         //cadastrar o produto
       }
       else{
-        props.setListaProdutos(props.listaProdutos.map((item) => {
-          if (item.codigo === props.produtoSelecionado.codigo) {
-            return{
-              ...item,
-              dataValidade: props.produtoSelecionado.dataValidade,
-              descricao: props.produtoSelecionado.descricao,
-              precoCusto: props.produtoSelecionado.precoCusto,
-              precoVenda: props.produtoSelecionado.precoVenda,
-              qtdEstoque: props.produtoSelecionado.qtdEstoque,
-              urlImagem: props.produtoSelecionado.urlImagem
-            };
-          }
-          return item;
-          })
-        );
+        props.setListaProdutos(props.listaProdutos.map((item) =>
+          item.codigo === props.produtoSelecionado.codigo ? props.produtoSelecionado : item
+        ));
         window.alert("Produto atualizado com sucesso!");
         props.setProdutoSelecionado(produtoReseta);
         props.setModoEdicao(false);
