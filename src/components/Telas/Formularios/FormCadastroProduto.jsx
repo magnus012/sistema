@@ -1,26 +1,26 @@
 import { useState } from "react";
 import { Col, Form, Row, Button } from "react-bootstrap";
-import { produtos } from "../../../dados/mockProdutos";
 
 export default function FormProduto(props) {
 
-  //const [validated, setValidated] = useState(false);
   const [formValidado, setFormValidado] = useState(false);
-  /*const handleSubmit = (event) => {
-    //validação
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
-  };*/
+  const produtoReseta= {
+      codigo: 0,
+      dataValidade: "",
+      descricao: "",
+      precoCusto: 0,
+      precoVenda: 0,
+      qtdEstoque: 0,
+      urlImagem: ""
+  }
+
   function manipularSubmissao(evento) {
     const form = evento.currentTarget;
     if (form.checkValidity()) {
       if(!props.modoEdicao){
-        props.setListaProdutos([...props.listaProdutos, produtos]);
+        props.setListaProdutos([...props.listaProdutos, props.produtoSelecionado]);
         //exibir tabela com o produto incluido
+        window.alert("Produto inserido com sucesso!");
         props.setExibirProdutos(true);
         //cadastrar o produto
       }
@@ -40,7 +40,8 @@ export default function FormProduto(props) {
           return item;
           })
         );
-        console.log("Produto alterado com sucesso");
+        window.alert("Produto atualizado com sucesso!");
+        props.setProdutoSelecionado(produtoReseta);
         props.setModoEdicao(false);
         props.setExibirProdutos(true);
       }

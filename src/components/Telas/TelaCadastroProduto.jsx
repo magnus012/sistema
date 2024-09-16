@@ -19,6 +19,7 @@ export default function TelaCadastroProduto(props) {
         qtdEstoque: 0,
         urlImagem: ""
     });    
+    
     return (
         <div>
             <Pagina>
@@ -39,8 +40,8 @@ export default function TelaCadastroProduto(props) {
                             setExibirProdutos={setExibirProdutos}
                             modoEdicao={modoEdicao}
                             setModoEdicao={setModoEdicao} 
-                            produtoSelecionado={produtoSelecionado}
-                            setProdutoSelecionado={setProdutoSelecionado} />
+                            setProdutoSelecionado={setProdutoSelecionado}
+                            produtoSelecionado={produtoSelecionado}  />
                 }
             </Pagina>
         </div>
