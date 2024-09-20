@@ -2,7 +2,7 @@ import { Button, Container, Table, Image } from "react-bootstrap";
 
 export default function TabelaProdutos(props) {
   function alterarProduto(produto){
-    if(window.confirm("Deseja realmente alterar o produto" + produto.descricao)){
+    if(window.confirm("Deseja realmente alterar o produto " + produto.descricao)){
       props.setExibirProdutos(false);
       props.setProdutoSelecionado(produto);
       props.setModoEdicao(true);
@@ -10,7 +10,7 @@ export default function TabelaProdutos(props) {
   }
 
   function excluirProduto(produto) {
-    if (window.confirm("Deseja realmente excluir o produto" + produto.descricao)) {
+    if (window.confirm("Deseja realmente excluir o produto " + produto.descricao)) {
       props.setListaProdutos (props.listaProdutos.filter((item) => {
         return item.codigo !== produto.codigo
       }));
