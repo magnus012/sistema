@@ -1,11 +1,7 @@
 import Pagina from "../layouts/Pagina";
-import { Container } from "react-bootstrap";
 
-export default function TelaMenu(props) {
+export default function TelaInicio(props) {
     return (
-        <Container>
-            <Pagina />
-        </Container>
-
+        <Pagina />
     );
 }

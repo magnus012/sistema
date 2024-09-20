@@ -3,48 +3,53 @@ import { Col, Form, Row, Button } from "react-bootstrap";
 
 export default function FormCadastroProduto(props) {
   const [formValidado, setFormValidado] = useState(false);
-  const produtoReseta= {
-      codigo: 0,
-      dataValidade: "",
-      descricao: "",
-      precoCusto: 0,
-      precoVenda: 0,
-      qtdEstoque: 0,
-      urlImagem: ""
-  }
+  const produtoReseta = {
+    codigo: "",
+    dataValidade: "",
+    descricao: "",
+    precoCusto: "",
+    precoVenda: "",
+    qtdEstoque: "",
+    urlImagem: ""
+  };
 
   function manipularSubmissao(evento) {
     const form = evento.currentTarget;
     if (form.checkValidity()) {
-      if(!props.modoEdicao){
-        props.setListaProdutos([...props.listaProdutos, props.produtoSelecionado]);
-        //exibir tabela com o produto incluido
+      if (!props.modoEdicao) {
+        props.setListaProdutos([
+          ...props.listaProdutos,
+          props.produtoSelecionado,
+        ]);
         window.alert("Produto inserido com sucesso!");
         props.setExibirProdutos(true);
-        //cadastrar o produto
-      }
-      else{
-        props.setListaProdutos(props.listaProdutos.map((item) =>
-          item.codigo === props.produtoSelecionado.codigo ? props.produtoSelecionado : item
-        ));
+      } else {
+        props.setListaProdutos(
+          props.listaProdutos.map((item) =>
+            item.codigo === props.produtoSelecionado.codigo
+              ? props.produtoSelecionado
+              : item
+          )
+        );
         window.alert("Produto atualizado com sucesso!");
-        props.setProdutoSelecionado(produtoReseta);
         props.setModoEdicao(false);
         props.setExibirProdutos(true);
       }
-    }
-    else {
+      props.setProdutoSelecionado(produtoReseta);
+    } else {
       setFormValidado(true);
     }
     evento.preventDefault();
     evento.stopPropagation();
-
   }
 
-  function manipularMudanca(evento){
+  function manipularMudanca(evento) {
     const elemento = evento.target.name;
     const valor = evento.target.value;
-    props.setProdutoSelecionado({...props.produtoSelecionado, [elemento]:valor});
+    props.setProdutoSelecionado({
+      ...props.produtoSelecionado,
+      [elemento]: valor,
+    });
   }
 
   return (
@@ -54,7 +59,16 @@ export default function FormCadastroProduto(props) {
           {/* ########## Código ########## */}
           <Form.Group className="mb-3">
             <Form.Label>Código</Form.Label>
-            <Form.Control disabled={props.modoEdicao} required type="number" id="codigo" name="codigo" value={props.produtoSelecionado.codigo} onChange={manipularMudanca} placeholder="Código" />
+            <Form.Control
+              required
+              disabled={props.modoEdicao}
+              type="number"
+              id="codigo"
+              name="codigo"
+              value={props.produtoSelecionado.codigo}
+              onChange={manipularMudanca}
+              placeholder="Código"
+            />
             <Form.Control.Feedback type="invalid">
               Por favor, informe o código do produto!
             </Form.Control.Feedback>
@@ -64,7 +78,15 @@ export default function FormCadastroProduto(props) {
           {/* ########## Validade ########## */}
           <Form.Group className="mb-3">
             <Form.Label>Válido até: </Form.Label>
-            <Form.Control required type="date" id="dataValidade" name="dataValidade" value={props.produtoSelecionado.dataValidade} onChange={manipularMudanca} placeholder="Válido até:" />
+            <Form.Control
+              required
+              type="date"
+              id="dataValidade"
+              name="dataValidade"
+              value={props.produtoSelecionado.dataValidade}
+              onChange={manipularMudanca}
+              placeholder="Válido até:"
+            />
             <Form.Control.Feedback type="invalid">
               Por favor, informe a data de validade!
             </Form.Control.Feedback>
@@ -74,7 +96,15 @@ export default function FormCadastroProduto(props) {
           {/* ########## Descrição ########## */}
           <Form.Group className="mb-3">
             <Form.Label>Descrição:</Form.Label>
-            <Form.Control required type="text" id="descricao" name="descricao" value={props.produtoSelecionado.descricao} onChange={manipularMudanca} placeholder="Descrição:" />
+            <Form.Control
+              required
+              type="text"
+              id="descricao"
+              name="descricao"
+              value={props.produtoSelecionado.descricao}
+              onChange={manipularMudanca}
+              placeholder="Descrição:"
+            />
             <Form.Control.Feedback type="invalid">
               Por favor, informe a descrição do produto!
             </Form.Control.Feedback>
@@ -122,7 +152,15 @@ export default function FormCadastroProduto(props) {
           {/* ########## Estoque ########## */}
           <Form.Group className="mb-3">
             <Form.Label>Estoque:</Form.Label>
-            <Form.Control required type="number" id="qtdEstoque" name="qtdEstoque" value={props.produtoSelecionado.qtdEstoque} onChange={manipularMudanca} placeholder="Estoque:" />
+            <Form.Control
+              required
+              type="number"
+              id="qtdEstoque"
+              name="qtdEstoque"
+              value={props.produtoSelecionado.qtdEstoque}
+              onChange={manipularMudanca}
+              placeholder="Estoque:"
+            />
             <Form.Control.Feedback type="invalid">
               Por favor, informe a quantidade em estoque deste produto!
             </Form.Control.Feedback>
@@ -134,7 +172,15 @@ export default function FormCadastroProduto(props) {
           {/* ########## URL Imagem ########## */}
           <Form.Group className="mb-3">
             <Form.Label>URL da Imagem:</Form.Label>
-            <Form.Control required type="url" id="urlImagem" name="urlImagem" value={props.produtoSelecionado.urlImagem} onChange={manipularMudanca} placeholder="URL da Imagem:" />
+            <Form.Control
+              required
+              type="url"
+              id="urlImagem"
+              name="urlImagem"
+              value={props.produtoSelecionado.urlImagem}
+              onChange={manipularMudanca}
+              placeholder="URL da Imagem:"
+            />
             <Form.Control.Feedback type="invalid">
               Por favor, informe a url da imagem deste produto!
             </Form.Control.Feedback>
@@ -142,14 +188,16 @@ export default function FormCadastroProduto(props) {
         </Col>
       </Row>
       <Row className="mt-2 mb-2">
-        <Col md={1}>
+        <Col md={2}>
           <Button id="botao" type="submit" variant="success">
             Confirmar
-          </Button>{" "}
+          </Button>
         </Col>
-        <Col md={{ offset: 1 }}>
+        <Col>
           <Button
             onClick={() => {
+              props.setModoEdicao(false);
+              props.setProdutoSelecionado(produtoReseta);
               props.setExibirProdutos(true);
             }}
             type="button"

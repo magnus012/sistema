@@ -2,23 +2,67 @@ import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 
 export default function FormCadastroCliente(props) {
-  const [validated, setValidated] = useState(false);
-  const handleSubmit = (event) => {
-    //validação
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
+  const [formValidado, setFormValidado] = useState(false);
+  const usuarioReseta = {
+    nomeUsuario: "",
+    email: "",
+    perfil: "",
+    senha: "",
+    senhaConfirmacao: ""
   };
+  function manipularSubmissao(evento) {
+    const form = evento.currentTarget;
+    if (form.checkValidity()) {
+      if (!props.modoEdicao) {
+        props.setListaUsuarios([
+          ...props.listaUsuarios,
+          props.usuarioSelecionado,
+        ]);
+        window.alert("Usuario inserido com sucesso!");
+        props.setExibirUsuarios(true);
+      } else {
+        props.setListaUsuarios(
+          props.listaUsuarios.map((item) =>
+            item.nomeUsuario === props.usuarioSelecionado.nomeUsuario
+              ? props.usuarioSelecionado
+              : item
+          )
+        );
+        window.alert("Usuario atualizado com sucesso!");
+        props.setModoEdicao(false);
+        props.setExibirUsuarios(true);
+      }
+      props.setUsuarioSelecionado(usuarioReseta);
+    } else {
+      setFormValidado(true);
+    }
+    evento.preventDefault();
+    evento.stopPropagation();
+  }
+
+  function manipularMudanca(evento) {
+    const elemento = evento.target.name;
+    const valor = evento.target.value;
+    props.setUsuarioSelecionado({
+      ...props.usuarioSelecionado,
+      [elemento]: valor,
+    });
+  }
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form noValidate validated={formValidado} onSubmit={manipularSubmissao}>
       {/* ########## Nome Usuario ########## */}
       <Form.Group className="mb-3" controlId="formGroupNome">
         <Form.Label>Nome Usuario</Form.Label>
-        <Form.Control required type="text" placeholder="Nome Usuario" />
+        <Form.Control
+          required
+          id="nomeUsuario"
+          name="nomeUsuario"
+          value={props.usuarioSelecionado.nomeUsuario}
+          onChange={manipularMudanca}
+          type="text"
+          placeholder="Nome Usuario"
+        />
         <Form.Control.Feedback type="invalid">
           Por favor, informe seu nome de usuário!
         </Form.Control.Feedback>
@@ -26,7 +70,16 @@ export default function FormCadastroCliente(props) {
       {/* ########## Email ########## */}
       <Form.Group className="mb-3" controlId="formGroupEmail">
         <Form.Label>Email</Form.Label>
-        <Form.Control required type="email" placeholder="Email" />
+        <Form.Control
+          required
+          disabled={props.modoEdicao}
+          id="email"
+          name="email"
+          value={props.usuarioSelecionado.email}
+          onChange={manipularMudanca}
+          type="email"
+          placeholder="Email"
+        />
         <Form.Control.Feedback type="invalid">
           Por favor, informe seu email: nome@exemplo.com.
         </Form.Control.Feedback>
@@ -34,13 +87,19 @@ export default function FormCadastroCliente(props) {
       {/* ########## Perfil ########## */}
       <Form.Group>
         <Form.Label>Perfil</Form.Label>
-        <Form.Select required aria-label="Perfil" controlId="formGroupPerfil">
-          <option selected value="">
-            Nenhum
-          </option>
-          <option value="1">Admin</option>
-          <option value="2">Visitante</option>
-          <option value="3">Normal</option>
+        <Form.Select
+          required
+          id="perfil"
+          name="perfil"
+          value={props.usuarioSelecionado.perfil}
+          onChange={manipularMudanca}
+          aria-label="Perfil"
+          controlId="formGroupPerfil"
+        >
+          <option value="">Nenhum</option>
+          <option value="Admin">Admin</option>
+          <option value="Visitante">Visitante</option>
+          <option value="Normal">Normal</option>
         </Form.Select>
         <Form.Control.Feedback type="invalid">
           Por favor, selecione um tipo de perfil!.
@@ -49,7 +108,15 @@ export default function FormCadastroCliente(props) {
       {/* ########## Senha ########## */}
       <Form.Group className="mb-3" controlId="formGroupSenha">
         <Form.Label>Senha</Form.Label>
-        <Form.Control required type="password" placeholder="Senha" />
+        <Form.Control
+          required
+          id="senha"
+          name="senha"
+          value={props.usuarioSelecionado.senha}
+          onChange={manipularMudanca}
+          type="password"
+          placeholder="Senha"
+        />
         <Form.Control.Feedback type="invalid">
           Por favor, informe sua senha!
         </Form.Control.Feedback>
@@ -59,6 +126,10 @@ export default function FormCadastroCliente(props) {
         <Form.Label>Senha de Confirmação</Form.Label>
         <Form.Control
           required
+          id="senhaConfirmacao"
+          name="senhaConfirmacao"
+          value={props.usuarioSelecionado.senhaConfirmacao}
+          onChange={manipularMudanca}
           type="password"
           placeholder="Senha de Confirmação"
         />
@@ -67,14 +138,16 @@ export default function FormCadastroCliente(props) {
         </Form.Control.Feedback>
       </Form.Group>
       <Row className="mt-2 mb-2">
-        <Col md={1}>
+        <Col md={2}>
           <Button type="submit" variant="success">
             Confirmar
           </Button>{" "}
         </Col>
-        <Col md={{ offset: 1 }}>
+        <Col>
           <Button
             onClick={() => {
+              props.setModoEdicao(false);
+              props.setUsuarioSelecionado(usuarioReseta);
               props.setExibirUsuarios(true);
             }}
             type="button"
