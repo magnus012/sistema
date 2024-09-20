@@ -32,6 +32,7 @@ export default function TelaCadastroProduto(props) {
                         <TabelaProdutos listaProdutos={listaProduto}
                             setExibirProdutos={setExibirProdutos}
                             setModoEdicao={setModoEdicao}
+                            setListaProdutos={setListaProdutos}
                             setProdutoSelecionado={setProdutoSelecionado} /> :
                         <FormProduto listaProdutos={listaProduto}
                             setListaProdutos={setListaProdutos}

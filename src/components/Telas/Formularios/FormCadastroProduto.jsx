@@ -65,7 +65,7 @@ export default function FormProduto(props) {
           {/* ########## Código ########## */}
           <Form.Group className="mb-3">
             <Form.Label>Código</Form.Label>
-            <Form.Control required type="number" id="codigo" name="codigo" value={produto.codigo} onChange={manipularMudanca} placeholder="Código" />
+            <Form.Control disabled ={props.modoEdicao} required type="number" id="codigo" name="codigo" value={produto.codigo} onChange={manipularMudanca} placeholder="Código" />
             <Form.Control.Feedback type="invalid">
               Por favor, informe o código do produto!
             </Form.Control.Feedback>
