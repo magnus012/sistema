@@ -196,8 +196,8 @@ export default function FormCadastroProduto(props) {
         <Col>
           <Button
             onClick={() => {
+              props.setProdutoSelecionado(produtoReseta)
               props.setModoEdicao(false);
-              props.setProdutoSelecionado(produtoReseta);
               props.setExibirProdutos(true);
             }}
             type="button"
