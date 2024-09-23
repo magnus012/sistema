@@ -77,7 +77,7 @@ export default function FormCadastroEntregador(props) {
                 <Col>
                     {/* ########## Nome ########## */}
                     <Form.Group className="mb-3" controlId="formGroupNome">
-                        <Form.Label>Nome Entregador</Form.Label>
+                        <Form.Label>Nome do Entregador</Form.Label>
                         <Form.Control
                             required
                             type="text"
@@ -85,10 +85,10 @@ export default function FormCadastroEntregador(props) {
                             name="nome"
                             value={props.entregadorSelecionado.nome}
                             onChange={manipularMudanca}
-                            placeholder="Nome Entregador"
+                            placeholder="Nome do Entregador"
                         />
                         <Form.Control.Feedback type="invalid">
-                            Por favor, informe um nome!
+                            Por favor, informe o nome do entregador!
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -108,7 +108,7 @@ export default function FormCadastroEntregador(props) {
                             placeholder="CNH"
                         />
                         <Form.Control.Feedback type="invalid">
-                            Por favor, informe uma CNH
+                            Por favor, informe uma CNH!
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -153,7 +153,7 @@ export default function FormCadastroEntregador(props) {
                 <Col>
                     {/* ########## Placa ########## */}
                     <Form.Group className="mb-3" controlId="formGroupPlaca">
-                        <Form.Label>Placa Veiculo</Form.Label>
+                        <Form.Label>Placa do Veículo</Form.Label>
                         <Form.Control
                             required
                             type="text"
@@ -161,17 +161,17 @@ export default function FormCadastroEntregador(props) {
                             name="placa"
                             value={props.entregadorSelecionado.placa}
                             onChange={manipularMudanca}
-                            placeholder="Placa Veiculo"
+                            placeholder="Placa do Veículo"
                         />
                         <Form.Control.Feedback type="invalid">
-                            Por favor, informe uma Placa Veiculo.
+                            Por favor, informe a Placa do Veículo.
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
             </Row>
             {/* ########## Capacida Maxima ########## */}
             <Form.Group className="mb-3" controlId="formGroupCapacidadeMax">
-                <Form.Label>Capacida Maxima do Veiculo (KG)</Form.Label>
+                <Form.Label>Capacida Maxima do Veículo (KG)</Form.Label>
                 <Form.Control
                     required
                     type="number"
@@ -179,10 +179,10 @@ export default function FormCadastroEntregador(props) {
                     name="capacidadeMax"
                     value={props.entregadorSelecionado.capacidadeMax}
                     onChange={manipularMudanca}
-                    placeholder="Capacidade Maxima do Veiculo (KG)"
+                    placeholder="Capacidade Maxima do Veículo (KG)"
                 />
                 <Form.Control.Feedback type="invalid">
-                    Por favor, informe a capacidade maxima do veiculo (KG).
+                    Por favor, informe a capacidade maxima do veículo (KG).
                 </Form.Control.Feedback>
             </Form.Group>
             <Row className="mt-2 mb-2">

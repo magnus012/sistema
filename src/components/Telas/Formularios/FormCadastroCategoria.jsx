@@ -51,7 +51,7 @@ export default function FormCadastroCategoria(props) {
     <Form noValidate validated={formValidado} onSubmit={manipularSubmissao}>
       {/* ########## Codigo ########## */}
       <Form.Group className="mb-3" controlId="formGroupCodigo">
-        <Form.Label>Codigo</Form.Label>
+        <Form.Label>Código</Form.Label>
         <Form.Control
           required
           disabled={props.modoEdicao}
@@ -60,7 +60,7 @@ export default function FormCadastroCategoria(props) {
           value={props.categoriaSelecionado.codigo}
           onChange={manipularMudanca}
           type="text"
-          placeholder="Codigo"
+          placeholder="Código"
         />
         <Form.Control.Feedback type="invalid">
           Por favor, informe o codigo!

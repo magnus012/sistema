@@ -53,7 +53,7 @@ export default function FormCadastroCliente(props) {
     <Form noValidate validated={formValidado} onSubmit={manipularSubmissao}>
       {/* ########## Nome Usuario ########## */}
       <Form.Group className="mb-3" controlId="formGroupNome">
-        <Form.Label>Nome Usuario</Form.Label>
+        <Form.Label>Nome de Usuário</Form.Label>
         <Form.Control
           required
           id="nomeUsuario"
@@ -61,7 +61,7 @@ export default function FormCadastroCliente(props) {
           value={props.usuarioSelecionado.nomeUsuario}
           onChange={manipularMudanca}
           type="text"
-          placeholder="Nome Usuario"
+          placeholder="Nome de Usuário"
         />
         <Form.Control.Feedback type="invalid">
           Por favor, informe seu nome de usuário!
