@@ -139,8 +139,8 @@ export default function FormCadastroCliente(props) {
       </Form.Group>
       <Row className="mt-2 mb-2">
         <Col md={2}>
-          <Button type="submit" variant="success">
-            Confirmar
+          <Button type="submit" variant={props.modoEdicao ? "warning":"success"}>
+          {props.modoEdicao ? "Alterar":"Confirmar"}
           </Button>{" "}
         </Col>
         <Col>
@@ -151,7 +151,7 @@ export default function FormCadastroCliente(props) {
               props.setExibirUsuarios(true);
             }}
             type="button"
-            variant="success"
+            variant={props.modoEdicao ? "warning":"success"}
           >
             Voltar
           </Button>

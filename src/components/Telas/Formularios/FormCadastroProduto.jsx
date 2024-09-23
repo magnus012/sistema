@@ -189,8 +189,8 @@ export default function FormCadastroProduto(props) {
       </Row>
       <Row className="mt-2 mb-2">
         <Col md={2}>
-          <Button id="botao" type="submit" variant="success">
-            Confirmar
+          <Button id="botao" type="submit" variant={props.modoEdicao ? "warning":"success"}>
+            {props.modoEdicao ? "Alterar":"Confirmar"}
           </Button>
         </Col>
         <Col>
@@ -201,7 +201,7 @@ export default function FormCadastroProduto(props) {
               props.setExibirProdutos(true);
             }}
             type="button"
-            variant="success"
+            variant={props.modoEdicao ? "warning":"success"}
           >
             Voltar
           </Button>
