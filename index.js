@@ -8,7 +8,10 @@
 import express from 'express';
 import rotaProduto from './Rotas/rotaProdutos.js';
 import cors from 'cors';
+import dotenv from 'dotenv'
 
+//carregar as variaveis do arq .env
+dotenv.config();
 
 const host = "0.0.0.0"; //todas as placas de rede do computador que está executando a aplicação
 const porta = 3000;
@@ -19,9 +22,9 @@ app.use(express.json());
 
 //configurar a aplicação para responder requisições não importando a origem
 app.use(cors({
-                "origin":"*",
-                "Access-Control-Allow-Origin":'*'
-        }));
+    "origin": "*",
+    "Access-Control-Allow-Origin": '*'
+}));
 
 //app utilize a pasta 'publico' para disponibilizar o conteúdo ali armazenado
 app.use(express.static('./publico'));

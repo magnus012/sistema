@@ -1,6 +1,6 @@
 {
   "name": "servidor",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Exemplo de um servidor http",
   "main": "index.js",
   "type": "module",
@@ -8,19 +8,25 @@
     "start": "node index.js",
     "test": "echo Nenhum comando de teste foi especificado."
   },
-  "keywords": [
-    "http",
-    "node",
-    "fipp",
-    "lp1",
-    "querido",
-    "aluno"
-  ],
-  "author": "Renato",
+  "author": "LuizRJ e IgorMC",
   "license": "ISC",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "mysql2": "^3.9.7"
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "gh-pages": "^6.1.1",
+    "mysql2": "^3.11.3",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.4",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.1",
+    "react-scripts": "5.0.1",
+    "servidor": "file:",
+    "sistema": "file:",
+    "web-vitals": "^2.1.4"
   }
 }
